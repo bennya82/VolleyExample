@@ -7,14 +7,18 @@ import org.json.JSONObject;
  */
 
 public class Contact {
-    public String firstName;
-    public String lastName;
+    public String fname;
+    public String Lname;
+
+    public Contact(){
+
+    }
 
     public Contact(JSONObject data){
         if (data!=null){
             try {
-                firstName = data.getString("fname");
-                lastName = data.getString("lname");
+                fname = data.getString("fname");
+                Lname = data.getString("lname");
             }catch (Exception ex){
 
             }

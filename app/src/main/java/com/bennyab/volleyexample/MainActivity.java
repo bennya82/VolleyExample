@@ -13,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,7 +38,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.v("onResponse",response.toString());
+
+                        Gson gson = new Gson();
+                        Contact[] result = gson.fromJson(response.toString(),Contact[].class);
+
                         ArrayList<Contact> data = GetContactsRequest.parseContacts(response);
+
+
                         Toast.makeText(MainActivity.this,Integer.toString(data.size()),Toast.LENGTH_LONG).show();
                     }
                 },
